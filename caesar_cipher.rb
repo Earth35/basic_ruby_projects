@@ -4,8 +4,6 @@ def caesar_cipher (input, shift)
   input_letters = input.downcase.split(//)
   out = []
   input_letters.each do |x|
-
-  
     if (x =~ /\W|\d/)
 	  out.push(x)
       next
