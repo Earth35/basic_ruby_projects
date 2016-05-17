@@ -1,16 +1,22 @@
 def caesar_cipher (input, shift)
   shift = shift.to_i
   letters = ('a'..'z').to_a
-  input_letters = input.downcase.split(//)
+  input_letters = input.split(//)
   out = []
   input_letters.each do |x|
     if (x =~ /\W|\d/)
       out.push(x)
       next
     else
+      uppercase = ('A'..'Z').include?(x) ? true : false
+      x.downcase!
       resulting_index = letters.index(x) + shift
       resulting_index -= letters.length if (resulting_index >= letters.length)
-      out.push(letters[resulting_index])
+      if uppercase
+        out.push(letters[resulting_index].upcase!)
+      else
+        out.push(letters[resulting_index])
+      end
     end
   end
   return out.join
