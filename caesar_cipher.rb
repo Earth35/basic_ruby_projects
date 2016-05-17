@@ -5,14 +5,12 @@ def caesar_cipher (input, shift)
   out = []
   input_letters.each do |x|
     if (x =~ /\W|\d/)
-	  out.push(x)
+      out.push(x)
       next
-	else
-	  resulting_index = letters.index(x) + shift
-	  if (resulting_index > letters.length)
-	    resulting_index -= letters.length
-	  end
-	  out.push(letters[resulting_index])
+    else
+      resulting_index = letters.index(x) + shift
+      resulting_index -= letters.length if (resulting_index >= letters.length)
+      out.push(letters[resulting_index])
     end
   end
   return out.join
